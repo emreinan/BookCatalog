@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Serilog.Events;
+using System.Reflection;
 
 namespace BookCatalog;
 
@@ -21,6 +22,8 @@ public static class MvcExtenisons
     {
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
+
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
         return services;
     }
 }
