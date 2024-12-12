@@ -99,3 +99,6 @@ FROM "Books" AS "b"
 2024-12-12 12:43:09.176 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7162/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 10.8861ms
 2024-12-12 12:43:09.193 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7162/_vs/browserLink - 200 null text/javascript; charset=UTF-8 32.3506ms
 2024-12-12 12:45:09.626 +03:00 [INF] Book updated: başlık
+2024-12-12 13:01:28.287 +03:00 [INF] Book updated: PageCount: '140' → '180'
+2024-12-12 13:22:07.045 +03:00 [INF] Book named 'başlık' updated: PageCount: '140' → '150'
+2024-12-12 13:27:05.675 +03:00 [INF] New book added: Title: baaaaaşlık, Author: yazar, Genre: korku, PageCount: 200
