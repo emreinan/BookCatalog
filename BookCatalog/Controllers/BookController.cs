@@ -2,6 +2,7 @@
 using BookCatalog.Data.Context;
 using BookCatalog.Data.Entity;
 using BookCatalog.Dto;
+using BookCatalog.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -14,7 +15,8 @@ public class BookController(ApplicationDbContext dbContext,IMapper mapper) : Con
     public async Task<IActionResult> Get()
     {
         var books = await dbContext.Books.ToListAsync();
-        return View(books);
+        var bookListViewModel = mapper.Map<List<BookViewModel>>(books);
+        return View(bookListViewModel);
     }
 
     [HttpGet]
@@ -23,10 +25,10 @@ public class BookController(ApplicationDbContext dbContext,IMapper mapper) : Con
         var book = await dbContext.Books.FindAsync(id);
         if (book is null)
         {
-            ViewData["ErrorMessage"] = "Book not found.";
-            return View("Error"); 
+            return View("Error", "Book not found.");
         }
-        return View(book);
+        var bookViewModel = mapper.Map<BookViewModel>(book);
+        return View(bookViewModel);
     }
 
     [HttpGet]
@@ -47,7 +49,7 @@ public class BookController(ApplicationDbContext dbContext,IMapper mapper) : Con
         var book = mapper.Map<Book>(bookDto);
         dbContext.Books.Add(book);
         dbContext.SaveChanges();
-        Log.Information($"New book added: {bookDto}", bookDto);
+        Log.Information($"New book added: {bookDto.Title}", bookDto);
         return RedirectToAction(nameof(Get));
     }
 
@@ -57,10 +59,10 @@ public class BookController(ApplicationDbContext dbContext,IMapper mapper) : Con
         var book = dbContext.Books.Find(id);
         if (book is null)
         {
-            ViewData["ErrorMessage"] = "Book not found.";
-            return View("Error");
+            return View("Error", "Book not found.");
         }
-        return View(book);
+        var bookViewModel = mapper.Map<BookViewModel>(book);
+        return View(bookViewModel);
     }
 
     [HttpPost]
@@ -72,10 +74,12 @@ public class BookController(ApplicationDbContext dbContext,IMapper mapper) : Con
             return View(bookDto);
         }
 
-        var book = mapper.Map<Book>(bookDto);
-        dbContext.Books.Update(book);
+        var updatedBook = mapper.Map<Book>(bookDto);
+        updatedBook.Id = id;
+
+        dbContext.Books.Update(updatedBook);
         dbContext.SaveChanges();
-        Log.Information($"Book updated: {bookDto}", bookDto);
+        Log.Information($"Book updated: {bookDto.Title}", bookDto);
         return RedirectToAction(nameof(Get));
     }
 
@@ -85,12 +89,12 @@ public class BookController(ApplicationDbContext dbContext,IMapper mapper) : Con
         var book = dbContext.Books.Find(id);
         if (book is null)
         {
-            return NotFound();
+            return View("Error", "Book not found.");
         }
 
         dbContext.Books.Remove(book);
         dbContext.SaveChanges();
-        Log.Information($"Book deleted: {book}", book);
+        Log.Information($"Book deleted: {book.Title}", book);
 
         return RedirectToAction(nameof(Get));
     }

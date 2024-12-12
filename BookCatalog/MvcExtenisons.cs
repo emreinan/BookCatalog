@@ -11,7 +11,8 @@ public static class MvcExtenisons
     public static void ConfigureSerilog(this IHostBuilder hostBuilder)
     {
         Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning) // Min warning loglarını alır, sadece yaptığım info loglarını görmek, karmaşılığı azaltmak için.
+            .WriteTo.Console() // Consoleda da görmek için yaptım.
             .WriteTo.File("logs.txt", rollingInterval: RollingInterval.Day)
             .CreateLogger();
 
