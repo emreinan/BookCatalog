@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BookCatalog.Data.Entity;
 using BookCatalog.Dto;
+using BookCatalog.Models;
 
 namespace BookCatalog.Profiles
 {
@@ -9,6 +10,8 @@ namespace BookCatalog.Profiles
         public MappingProfile() 
         {
             CreateMap<Book, BookDto>().ReverseMap();
+
+            CreateMap<Book, BookViewModel>().ReverseMap();
         }
     }
 }
