@@ -1,0 +1,6 @@
+2024-12-14 08:23:52.658 +00:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2024-12-14 08:23:52.727 +00:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2024-12-14 08:23:52.803 +00:00 [WRN] No XML encryptor configured. Key {f20ad21e-37de-4c5b-8255-7ebb56a7cdee} may be persisted to storage in unencrypted form.
+2024-12-14 08:24:48.645 +00:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2024-12-14 08:24:48.722 +00:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2024-12-14 08:24:48.768 +00:00 [WRN] No XML encryptor configured. Key {1659deb6-c242-4c15-83e6-c8ad3e18aa9c} may be persisted to storage in unencrypted form.
