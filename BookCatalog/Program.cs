@@ -4,8 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-builder.Host.ConfigureSerilog();
-builder.Services.ConfigureDatabase(builder.Configuration);
+builder.Services.AddClientMvcServices(builder.Host, builder.Configuration);
 
 var app = builder.Build();
 

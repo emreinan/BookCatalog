@@ -1,0 +1,6 @@
+2024-12-17 08:34:15.909 +00:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2024-12-17 08:34:15.992 +00:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2024-12-17 08:34:16.075 +00:00 [WRN] No XML encryptor configured. Key {6eb105a1-8cf8-4e78-b774-3fd5165262cf} may be persisted to storage in unencrypted form.
+2024-12-17 11:35:36.360 +03:00 [INF] Book deleted: baaaaaşlık
+2024-12-17 11:35:37.719 +03:00 [INF] Book deleted: başlık
+2024-12-17 11:35:40.223 +03:00 [INF] Book deleted: başlık
