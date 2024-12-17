@@ -24,10 +24,12 @@ namespace BookCatalog.Data.Migrations
 
                     b.Property<string>("Author")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Genre")
                         .IsRequired()
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("PageCount")
@@ -35,11 +37,12 @@ namespace BookCatalog.Data.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
+                        .HasMaxLength(200)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 #pragma warning restore 612, 618
         }
